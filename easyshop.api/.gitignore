@@ -29,4 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Application Properties ###
 src/java/main/resources/application.properties
+src/main/resources/application.properties
