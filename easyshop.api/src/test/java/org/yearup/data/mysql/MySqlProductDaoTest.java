@@ -15,7 +15,6 @@ class MySqlProductDaoTest extends BaseDaoTestClass {
     @BeforeEach
     public void setup() {
         dao = new MySqlProductDao(dataSource);
-
     }
 
 
@@ -102,7 +101,6 @@ class MySqlProductDaoTest extends BaseDaoTestClass {
         List<Product> products = dao.listByCategoryId(categoryId);
         assertNotNull(products);
 
-        // Optionally assert some known condition, for example:
         for (Product p : products) {
             assertEquals(categoryId, p.getCategoryId());
         }
