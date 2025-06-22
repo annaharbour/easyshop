@@ -20,7 +20,7 @@ class MySqlProductDaoTest extends BaseDaoTestClass {
 
 
     @Test
-    public void getById_shouldReturn_theCorrectProduct() {
+    public void testGetById() {
         int productId = 1;
         Product expected = new Product() {{
             setProductId(1);
