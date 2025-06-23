@@ -55,7 +55,8 @@ public class CategoriesController {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
             }
             return category;
-//TODO: Throwing the internal server error instead of not found as should (404 required not 500)
+        } catch (ResponseStatusException ex) {
+            throw ex;
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
