@@ -176,6 +176,7 @@ class ShoppingCartService {
     updateCartDisplay()
     {
         try {
+            // TODO: Add up all the quantity values of the items instead of just unique items in the array
             const itemCount = this.cart.items.length;
             const cartControl = document.getElementById("cart-items")
 
