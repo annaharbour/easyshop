@@ -34,7 +34,7 @@ a:hover {
 
 header {
     background: linear-gradient( var(--color-accent), var(--color-bg-end)  );
-    border-bottom: solid 2px var(--color-accent);
+    border-bottom: solid 2px #ebf5fd;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -95,16 +95,21 @@ main > .content {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	width: 100%;
-    height: 87vh;
-    padding: 20px;
-    overflow: scroll;
-    gap: 20px;
+	height: 87vh;
+	padding: 20px;
+	overflow: scroll;
+	gap: 20px;
+	align-items: flex-start;
 }
 
 main > .content-form {
 	display: flex;
 	flex-direction: column;
-	padding-right: 20px;
+	/* padding-right: 20px; */
+    /* justify-content: space-evenly; */
+    margin: 50px;
+    width: 80%;
+
 }
 
 main > .content-form .cart-header,
@@ -135,16 +140,15 @@ main > .content-form .cart-item {
 }
 
 .product {
-	background-color: var(--color-text-light);
+    background-color: var(--color-text-light);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	/*width: 30%;*/
 	padding: 10px;
 	border-radius: 5px;
-	box-shadow: 1px 1px 5px #bfe0f9;
+    box-shadow: 1px 1px 5px #bfe0f9;
 	margin: 5px;
-	align-self: start;
 }
 
 .product .photo {
@@ -174,8 +178,9 @@ main > .content-form .cart-item {
 }
 
 .visible {
-	display: block;
+    display: block;
 }
+
 
 .hidden {
 	display: none !important;
