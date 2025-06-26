@@ -633,3 +633,53 @@ public class MySqlOrderDao extends MySqlDaoBase implements OrderDao {
 
 }
 ```
+### Frontend Changes
+
+I changed the style template for better aesthetic presentation and utilizing white space for readability.
+
+In addition to changing the css, I implemented the cart quantity count (including duplicates) rather than the count of unique items in the header. 
+
+```
+updateCartDisplay() {
+		try {
+			const itemCount = this.cart.items.reduce(
+				(sum, item) => sum + (item.quantity || 0),
+				0
+			);
+			const cartControl = document.getElementById("cart-items");
+
+			cartControl.innerText = itemCount;
+		} catch (e) {}
+	}
+```
+
+I also added a message toast to indicate success when the user adds an item to the cart.
+
+```
+addToCart(productId) {
+		const url = `${config.baseUrl}/cart/products/${productId}`;
+		// const headers = userService.getHeaders();
+
+		axios
+			.post(url, {}) // ,{headers})
+			.then((response) => {
+				this.setCart(response.data);
+
+				this.updateCartDisplay();
+
+				const data = {
+					message: "Product added to cart successfully.",
+					cart: this.cart,
+				};
+				templateBuilder.append("message", data, "errors");
+			})
+			.catch((error) => {
+				const data = {
+					error: "Add to cart failed.",
+				};
+
+				templateBuilder.append("error", data, "errors");
+			});
+	}
+
+```
