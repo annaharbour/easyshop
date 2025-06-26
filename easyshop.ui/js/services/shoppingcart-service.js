@@ -176,8 +176,7 @@ class ShoppingCartService {
     updateCartDisplay()
     {
         try {
-            // TODO: Add up all the quantity values of the items instead of just unique items in the array
-            const itemCount = this.cart.items.length;
+            const itemCount = this.cart.items.reduce((sum, item) => sum + (item.quantity || 0), 0);
             const cartControl = document.getElementById("cart-items")
 
             cartControl.innerText = itemCount;
@@ -187,8 +186,6 @@ class ShoppingCartService {
         }
     }
 }
-
-
 
 
 
