@@ -109,3 +109,11 @@ VALUES  ('Smartphone', 499.99, 1, 'A powerful and feature-rich smartphone for al
         ('Cookware Set', 149.99, 3, 'A comprehensive set of high-quality cookware for all your culinary needs.', 'cookware-set.jpg', 50, 1, 'Red'),
         ('Coffee Maker', 79.99, 3, 'Brew your favorite coffee with this efficient and stylish coffee maker.', 'coffee-maker.jpg', 30, 0, 'Black'),
         ('Kitchen Knife Set', 59.99, 3, 'A set of sharp and durable knives for effortless food preparation.', 'knife-set.jpg', 40, 1, 'Silver');
+/* INSERT into shopping_cart */
+
+INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES
+(1, 1, 1),   -- Smartphone
+(1, 3, 2),   -- Headphones
+(1, 4, 1),   -- Men's T-Shirt
+(1, 10, 1),  -- Cookware Set
+(1, 12, 1);  -- Kitchen Knife Set
