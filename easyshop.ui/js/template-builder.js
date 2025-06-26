@@ -2,6 +2,8 @@ let templateBuilder = {};
 
 class TemplateBuilder
 {
+    // render a template with the given value and place it in the target element
+    // if a callback is provided, it will be called after the template is rendered
     build(templateName, value, target, callback)
     {
         axios.get(`templates/${templateName}.html`)
@@ -21,11 +23,13 @@ class TemplateBuilder
             })
     }
 
+    // clear the target element
     clear(target)
     {
         document.getElementById(target).innerHTML = "";
     }
 
+    // append a template with the given value to the target element
     append(templateName, value, target)
     {
         axios.get(`templates/${templateName}.html`)
@@ -38,7 +42,7 @@ class TemplateBuilder
                      const element = this.createElementFromHTML(html);
                      const parent = document.getElementById(target);
                      parent.appendChild(element);
-
+    // if the target is "errors", the element will be removed after 3 seconds
                      if(target == "errors")
                      {
                          setTimeout(() => {
@@ -53,6 +57,8 @@ class TemplateBuilder
              })
     }
 
+    // create an HTML element from a string
+    // this is used to support multiple top-level nodes in the template
     createElementFromHTML(htmlString)
     {
         const div = document.createElement('div');
@@ -64,6 +70,8 @@ class TemplateBuilder
 
 }
 
+// Initialize the TemplateBuilder when the DOM is fully loaded
+// This ensures that the templateBuilder variable is available globally
 document.addEventListener('DOMContentLoaded', () => {
     templateBuilder = new TemplateBuilder();
 });
