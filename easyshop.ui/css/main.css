@@ -104,7 +104,11 @@ main > .content {
 main > .content-form {
 	display: flex;
 	flex-direction: column;
-	padding-right: 20px;
+	/* padding-right: 20px; */
+    /* justify-content: space-evenly; */
+    margin: 50px;
+    width: 80%;
+
 }
 
 main > .content-form .cart-header,
@@ -135,16 +139,15 @@ main > .content-form .cart-item {
 }
 
 .product {
-	background-color: var(--color-text-light);
+    background-color: var(--color-text-light);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	/*width: 30%;*/
 	padding: 10px;
 	border-radius: 5px;
-	box-shadow: 1px 1px 5px #bfe0f9;
+    box-shadow: 1px 1px 5px #bfe0f9;
 	margin: 5px;
-	align-self: start;
 }
 
 .product .photo {
@@ -174,8 +177,9 @@ main > .content-form .cart-item {
 }
 
 .visible {
-	display: block;
+    display: block;
 }
+
 
 .hidden {
 	display: none !important;
