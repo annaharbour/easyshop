@@ -34,7 +34,7 @@ a:hover {
 
 header {
     background: linear-gradient( var(--color-accent), var(--color-bg-end)  );
-    border-bottom: solid 2px var(--color-accent);
+    border-bottom: solid 2px #ebf5fd;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
