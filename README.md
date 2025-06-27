@@ -3,13 +3,10 @@
 E-Commerce Application for EasyShop. Website uses Spring Boot API for the backend, MySQL database for data storage, and JS/JQuery for Frontend. Includes authentication, product search (category, price range, color), and shopping cart functionality implemented on frontend and backend. Additionally the backend includes protected admin functions of adding/updating products and categories, checkout and fetching previous orders by their id. Future versions will include these backend features and admin portal. Additional features yet to implement include stripe checkout, responsive design, product ratings and comment, removal of products from cart, saving products for later, and user management for the admin. 
 
 ## 👚 App in Action
-![add](https://github.com/user-attachments/assets/88effb09-2d4f-458d-83b4-59cee9c622c8)
 
-![sort-black-electronics-max](https://github.com/user-attachments/assets/7b79ef9b-830e-4665-8eef-8de75aacb53a)
-
-![sort-black-electronics-min](https://github.com/user-attachments/assets/19ad8a63-af8a-4c04-b47b-ac27fc00e16e)
-
-![Screenshot 2025-06-26 15 26 16](https://github.com/user-attachments/assets/16a7bf46-8341-48b2-9f66-64e69850feca)
+![add](https://github.com/user-attachments/assets/285ba5d8-2152-4f27-ae60-8631e1fd3423)
+![sort-black-electronics-max](https://github.com/user-attachments/assets/9bdcd2fd-e5a3-4e17-987b-f44f4d5175ee)
+![sort-black-electronics-min](https://github.com/user-attachments/assets/eba5c0de-55a1-4020-8873-6fb7666932e6)
 
 ![Screenshot 2025-06-26 15 26 10](https://github.com/user-attachments/assets/fcf1b8dc-1d60-4c1a-9e7f-fc99a6a769f4)
 
@@ -248,8 +245,7 @@ For example, a laptop is listed 3 times, and it appeared to be the same product,
 there were slight differences, such as the description or the price.
 
 ```
-public void update(int productId, Product product)
-    {
+    public Product update(int productId, Product product) {
         String sql = "UPDATE products" +
                 " SET name = ? " +
                 "   , price = ? " +
@@ -261,8 +257,7 @@ public void update(int productId, Product product)
                 "   , featured = ? " +
                 " WHERE product_id = ?;";
 
-        try (Connection connection = getConnection())
-        {
+        try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, product.getName());
             statement.setBigDecimal(2, product.getPrice());
@@ -274,12 +269,15 @@ public void update(int productId, Product product)
             statement.setBoolean(8, product.isFeatured());
             statement.setInt(9, productId);
 
-            statement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                return getById(productId);
+            }
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 ```
 
